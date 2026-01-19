@@ -1,9 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36804.6 d17.14
+VisualStudioVersion = 17.14.36804.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kino", "Kino\Kino.csproj", "{D518BC82-1D0D-4517-8DED-92604CD35DBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema.Domain", "Cinema.Domain\Cinema.Domain.csproj", "{238CB434-AD77-4731-B77B-8F5906FEAC8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema.Application", "Cinema.Application\Cinema.Application.csproj", "{7C6DFBD4-66B3-4E04-ACE0-453B20CB131E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema.Tests", "Cinema.Tests\Cinema.Tests.csproj", "{C10A3269-0FB4-4F7E-9C6F-EFB10CE32122}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema.Wpf", "Cinema.Wpf\Cinema.Wpf.csproj", "{0FA9FB33-EB81-4A01-99C7-F7309A1BAB8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{D518BC82-1D0D-4517-8DED-92604CD35DBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D518BC82-1D0D-4517-8DED-92604CD35DBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D518BC82-1D0D-4517-8DED-92604CD35DBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{238CB434-AD77-4731-B77B-8F5906FEAC8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{238CB434-AD77-4731-B77B-8F5906FEAC8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{238CB434-AD77-4731-B77B-8F5906FEAC8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{238CB434-AD77-4731-B77B-8F5906FEAC8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C6DFBD4-66B3-4E04-ACE0-453B20CB131E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C6DFBD4-66B3-4E04-ACE0-453B20CB131E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C6DFBD4-66B3-4E04-ACE0-453B20CB131E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C6DFBD4-66B3-4E04-ACE0-453B20CB131E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C10A3269-0FB4-4F7E-9C6F-EFB10CE32122}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C10A3269-0FB4-4F7E-9C6F-EFB10CE32122}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C10A3269-0FB4-4F7E-9C6F-EFB10CE32122}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C10A3269-0FB4-4F7E-9C6F-EFB10CE32122}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FA9FB33-EB81-4A01-99C7-F7309A1BAB8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FA9FB33-EB81-4A01-99C7-F7309A1BAB8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FA9FB33-EB81-4A01-99C7-F7309A1BAB8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FA9FB33-EB81-4A01-99C7-F7309A1BAB8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
