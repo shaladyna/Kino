@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cinema.Domain
 {
-    internal class Reservation
+    public class Reservation
     {
         public int Id { get; set; }
         public int ScreeningId { get; set; }
@@ -15,7 +15,7 @@ namespace Cinema.Domain
         public List<Ticket> Tickets { get; set; }
         public DateTime CreatedAt { get; set; }
 
-        public Reservation(int id, int screeningId, Customer customer, List<Seat> seats, List<Ticket> tickets)
+        public Reservation(int id, int screeningId, Customer customer, List<Seat> seats, List<Ticket> tickets, DateTime createdAt)
         {
 
             if (seats == null || seats.Count == 0)
@@ -32,6 +32,7 @@ namespace Cinema.Domain
             Customer = customer;
             Seats = seats;
             Tickets = tickets;
+            CreatedAt = createdAt;
             CreatedAt = DateTime.Now;
 
         }
