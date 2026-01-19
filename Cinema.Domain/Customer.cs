@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Cinema.Domain
 {
-    internal class Customer
+    public class Customer
     {
         public string Name { get; private set; }
         public string Email { get; private set; }
