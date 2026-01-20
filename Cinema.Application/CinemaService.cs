@@ -179,7 +179,5 @@ namespace Cinema.Application
             {
                 return _reservations;
             }
-
         }
-    }
 }
