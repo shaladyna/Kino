@@ -16,6 +16,10 @@ namespace Cinema.Domain
         }
 
         public abstract decimal GetPrice(decimal basePrice);
+        public virtual string GetDisplayName()
+        {
+            return $"Ticket: {Name}";
+        }
     }
 
     public class NormalTicket : Ticket
@@ -35,5 +39,9 @@ namespace Cinema.Domain
         public VipTicket() : base("VIP") { }
         public override decimal GetPrice(decimal basePrice) => basePrice * 1.5m;
 
+        public override string GetDisplayName()
+        {
+            return $"*** {Name.ToUpper()} CLASS TICKET ***";
+        }
     }
 }

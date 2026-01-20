@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cinema.Domain
 {
-    public class Reservation
+    public class Reservation : ICloneable
     {
         public int Id { get; set; }
         public int ScreeningId { get; set; }
@@ -33,8 +33,18 @@ namespace Cinema.Domain
             Seats = seats;
             Tickets = tickets;
             CreatedAt = createdAt;
-            CreatedAt = DateTime.Now;
 
+
+        }
+        public object Clone()
+        {
+            return new Reservation(
+                this.Id,
+                this.ScreeningId,
+                this.Customer,
+                new List<Seat>(this.Seats),
+                new List<Ticket>(this.Tickets),
+                this.CreatedAt);
         }
     }
 }

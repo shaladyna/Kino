@@ -37,4 +37,15 @@ namespace Cinema.Domain
             return Start.CompareTo(other.Start);
         }
     }
+    public class ScreeningByPriceComparer : IComparer<Screening>
+    {
+        public int Compare(Screening? x, Screening? y)
+        {
+            if (x == null && y == null) return 0;
+            if (x == null) return -1;
+            if (y == null) return 1;
+
+            return x.BasePrice.CompareTo(y.BasePrice);
+        }
+    }
 }
