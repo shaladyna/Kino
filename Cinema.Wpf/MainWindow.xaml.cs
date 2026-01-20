@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Cinema.Application;
+using Cinema.Application.Storage;
+using Cinema.Domain;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using Cinema.Application;
-using Cinema.Domain;
 
 namespace Cinema.Wpf
 {
@@ -57,19 +59,6 @@ namespace Cinema.Wpf
             }
         }
 
-        private void BtnExport_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                var state = _cinemaService.ExportState();
-                MessageBox.Show($"Wyeksportowano dane! Liczba filmów: {state.Movies.Count}");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Błąd eksportu: " + ex.Message);
-            }
-        }
-
         private void BtnManager_Click(object sender, RoutedEventArgs e)
         {
             var managerWin = new ManagerPanelWindow(_cinemaService);
@@ -77,5 +66,61 @@ namespace Cinema.Wpf
             managerWin.ShowDialog();
             RefreshList();
         }
+
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var dlg = new SaveFileDialog
+                {
+                    Filter = "JSON (*.json)|*.json",
+                    FileName = "cinema-state.json"
+                };
+
+                if (dlg.ShowDialog() != true) return;
+
+                var storage = new JsonStorageService();
+                var state = _cinemaService.ExportState();
+                storage.Save(dlg.FileName, state);
+
+                MessageBox.Show("Zapisano stan kina do pliku.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Błąd zapisu: " + ex.Message);
+            }
+        }
+
+        private void BtnLoad_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var dlg = new OpenFileDialog
+                {
+                    Filter = "JSON (*.json)|*.json"
+                };
+
+                if (dlg.ShowDialog() != true) return;
+
+                if (!System.IO.File.Exists(dlg.FileName))
+                {
+                    MessageBox.Show("Wybrany plik nie istnieje.");
+                    return;
+                }
+
+                var storage = new JsonStorageService();
+                var state = storage.Load(dlg.FileName);
+
+                _cinemaService.ImportState(state);
+                RefreshList();
+
+                MessageBox.Show("Wczytano stan kina z pliku.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Błąd odczytu: " + ex.Message);
+            }
+        }
+
     }
 }
