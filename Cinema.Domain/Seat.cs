@@ -1,25 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cinema.Domain
 {
-    public class Seat : System.IEquatable<Seat>
+    public class Seat : IEquatable<Seat>
     {
-        public Seat(int r, int s)
+        public int Row { get; }
+        public int Number { get; }
+        public Seat(int row, int number)
         {
-            R = r;
-            S = s;
+            if (row < 1) throw new ArgumentException("Row must be > 0");
+            if (number < 1) throw new ArgumentException("Number must be > 0");
+
+            Row = row;
+            Number = number;
         }
-
-        public int Row { get; set; }
-        public int Number { get; set; }
-        public int R { get; }
-        public int S { get; }
-
-        public bool Equals(Seat? other) => other != null && Row == other.Row && Number == other.Number;
+        public bool Equals(Seat? other)
+        {
+            if (other is null) return false;
+            return Row == other.Row && Number == other.Number;
+        }
+        public override bool Equals(object? obj) => Equals(obj as Seat);
         public override int GetHashCode() => (Row, Number).GetHashCode();
+        public override string ToString() => $"Rząd {Row}, Miejsce {Number}";
     }
 }

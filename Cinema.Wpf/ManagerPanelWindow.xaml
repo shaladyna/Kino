@@ -1,0 +1,40 @@
+﻿<Window x:Class="Cinema.Wpf.ManagerPanelWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Panel Managera" Height="450" Width="600" 
+        WindowStartupLocation="CenterOwner" Background="WhiteSmoke">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Raport Finansowy" FontSize="26" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+        <StackPanel Grid.Row="1">
+
+            <Border BorderBrush="Gray" BorderThickness="1" Background="White" Margin="0,0,0,10" Padding="15">
+                <StackPanel>
+                    <TextBlock Text="CAŁKOWITY PRZYCHÓD" FontSize="12" Foreground="DimGray" FontWeight="Bold"/>
+                    <TextBlock x:Name="TxtTotalEarnings" Text="0.00 zł" FontSize="32" FontWeight="Bold" Foreground="DarkGreen" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <Border BorderBrush="Gray" BorderThickness="1" Background="White" Margin="0,0,0,10" Padding="15">
+                <StackPanel>
+                    <TextBlock Text="NAJPOPULARNIEJSZY FILM" FontSize="12" Foreground="DimGray" FontWeight="Bold"/>
+                    <TextBlock x:Name="TxtPopularMovie" Text="Brak danych" FontSize="20" FontWeight="Bold" Foreground="Navy" Margin="0,5,0,0"/>
+                    <TextBlock x:Name="TxtTicketCount" Text="0 biletów" FontSize="14" Foreground="Black" Margin="0,2,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <Border BorderBrush="Gray" BorderThickness="1" Background="White" Padding="15">
+                <StackPanel>
+                    <TextBlock Text="SPRZEDAŻ WG RODZAJU" FontSize="12" Foreground="DimGray" FontWeight="Bold"/>
+                    <TextBlock x:Name="TxtTicketStats" Text="Normalne: 0 | Studenckie: 0 | VIP: 0" FontSize="16" Foreground="Black" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </Grid>
+</Window>
