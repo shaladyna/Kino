@@ -34,6 +34,8 @@ namespace Cinema.Wpf
             _screening = screening;
             _hall = hall;
 
+            TxtMovieTitle.Text = _service.GetMovieById(_screening.MovieId).Title;
+
             IcSelectedSeats.ItemsSource = _basket;
             GenerateSeats();
         }

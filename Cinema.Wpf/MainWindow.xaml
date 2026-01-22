@@ -48,12 +48,12 @@
                 <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
                     <Separator Margin="0,20,0,10" Background="Gray"/>
 
-                    <TextBlock Text="Administracja"
+                    <TextBlock Text="Admin"
                                Foreground="LightGray"
                                FontWeight="SemiBold"
                                Margin="0,0,0,6"/>
 
-                    <Button Content="Panel Administratora"
+                    <Button Content="Panel Menagera"
                             Click="BtnManager_Click"
                             Height="36"
                             Background="DarkGoldenrod"
