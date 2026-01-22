@@ -145,5 +145,14 @@ namespace Cinema.Wpf
                 MessageBox.Show("Błąd: " + ex.Message);
             }
         }
+
+        // OPCJA 2: metoda w oknie, dostępna dla SeatSelectionItem
+        public static string RowToLetter(int rowNumber)
+        {
+            if (rowNumber < 1 || rowNumber > 26)
+                return rowNumber.ToString();
+
+            return ((char)('A' + (rowNumber - 1))).ToString();
+        }
     }
 }
