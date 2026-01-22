@@ -2,11 +2,6 @@
 using System.Windows;
 using Cinema.Application;
 using Cinema.Domain;
-using System.Globalization;
-using System.Threading;
-
-Thread.CurrentThread.CurrentCulture = new CultureInfo("pl-PL");
-Thread.CurrentThread.CurrentUICulture = new CultureInfo("pl-PL");
 
 
 namespace Cinema.Wpf
