@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace Cinema.Domain
 {
-    abstract public class Ticket
+    [JsonPolymorphic(TypeDiscriminatorPropertyName = "$type")]
+    [JsonDerivedType(typeof(NormalTicket), "normal")]
+    [JsonDerivedType(typeof(StudentTicket), "student")]
+    [JsonDerivedType(typeof(VipTicket), "vip")]
+    public abstract class Ticket
     {
         public string Name { get; protected set; }
 
@@ -16,6 +21,7 @@ namespace Cinema.Domain
         }
 
         public abstract decimal GetPrice(decimal basePrice);
+
         public virtual string GetDisplayName()
         {
             return $"Ticket: {Name}";

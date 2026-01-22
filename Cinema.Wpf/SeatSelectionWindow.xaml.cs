@@ -14,7 +14,9 @@ namespace Cinema.Wpf
     {
         public Seat Seat { get; set; } = null!;
 
-        public string SeatDisplay => $"Rząd {Seat.Row}, M {Seat.Number}";
+        // Wyświetlanie literowego rzędu
+        public string SeatDisplay => $"Rząd {SeatSelectionWindow.RowToLetter(Seat.Row)}, M {Seat.Number}";
+
         public List<string> AvailableTicketTypes { get; } = new List<string> { "Normalny", "Studencki", "VIP" };
         public string SelectedTicketType { get; set; } = "Normalny";
     }
@@ -34,9 +36,13 @@ namespace Cinema.Wpf
             _screening = screening;
             _hall = hall;
 
+            TxtMovieTitle.Text = _service.GetMovieById(_screening.MovieId).Title;
+
             IcSelectedSeats.ItemsSource = _basket;
             GenerateSeats();
         }
+
+
 
         private void GenerateSeats()
         {
@@ -48,7 +54,13 @@ namespace Cinema.Wpf
                 for (int s = 1; s <= _hall.SeatsPerRow; s++)
                 {
                     var seat = new Seat(r, s);
-                    var btn = new Button { Content = $"{r}-{s}", Margin = new Thickness(3), Tag = seat };
+
+                    var btn = new Button
+                    {
+                        Content = $"{RowToLetter(r)}-{s}",
+                        Margin = new Thickness(3),
+                        Tag = seat
+                    };
 
                     if (_screening.ReservedSeats.Contains(seat))
                     {
@@ -60,6 +72,7 @@ namespace Cinema.Wpf
                         btn.Background = Brushes.White;
                         btn.Click += Seat_Click;
                     }
+
                     GridSeats.Children.Add(btn);
                 }
             }
@@ -81,6 +94,7 @@ namespace Cinema.Wpf
                 _basket.Add(new SeatSelectionItem { Seat = seat });
                 btn.Background = Brushes.SkyBlue;
             }
+
             UpdateTotalPrice();
         }
 
@@ -121,15 +135,24 @@ namespace Cinema.Wpf
                 var seats = _basket.Select(x => x.Seat).ToList();
                 var tickets = _basket.Select(x => CreateTicketObject(x.SelectedTicketType)).ToList();
 
-                var reservation = _service.CreateReservation(_screening.Id, customer, seats, tickets);
+                _service.CreateReservation(_screening.Id, customer, seats, tickets);
 
                 MessageBox.Show($"Rezerwacja pomyślna!\nKoszt całkowity: {TxtTotalPrice.Text}");
-                this.Close();
+                Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Błąd: " + ex.Message);
             }
+        }
+
+        // OPCJA 2: metoda w oknie, dostępna dla SeatSelectionItem
+        public static string RowToLetter(int rowNumber)
+        {
+            if (rowNumber < 1 || rowNumber > 26)
+                return rowNumber.ToString();
+
+            return ((char)('A' + (rowNumber - 1))).ToString();
         }
     }
 }
