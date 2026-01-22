@@ -179,5 +179,13 @@ namespace Cinema.Application
             {
                 return _reservations;
             }
+
+        public Movie GetMovieById(int movieId)
+        {
+            if (!_movies.TryGetValue(movieId, out var movie))
+                throw new EntityNotFoundException($"Movie with Id={movieId} not found.");
+            return movie;
         }
+
+    }
 }
